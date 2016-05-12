@@ -21,6 +21,8 @@ var Handler = (function(){
 		}
 		return true;
 	};
+
+
 	var checkPrime = function(n){
 		var primes = [];
 		for(var i = 0; i < n; i++){
@@ -32,6 +34,8 @@ var Handler = (function(){
 		return primes;
 	};
 
+
+
 	var generateNumber = function(){
 		var randomnumber = Math.floor(Math.random()*11)
 		console.log('the randomnumber is '+randomnumber);
@@ -39,25 +43,40 @@ var Handler = (function(){
 	};
 	number = generateNumber();
 	tryNumber = 0;
-	previousNumber = null;
+	previousAttemps = null;
+	state = false;
+	previousArray = [];
 	var guessingGame = function(userInput){
 		if(userInput > number){
 			alert('The number entered is GREATHER THAN the hidden number');
+			state = false;
 		}else if(userInput < number){
 			alert('The number entered is LESS THAN the hidden number');
+			state = false;
 		}else if(userInput == number){
 			alert('Congratulations!, YOU WON!');
-			return true;
+			state = true;
+			return state;
 		}
 		console.log('the number is ' + number + ' and your input was ' + userInput);
-		console.log('previousNumber is ' + previousNumber);
-		if(previousNumber == userInput){
-			tryNumber += 1;
+		if(state === false){
+			previousArray.push(userInput);
 		}
-		previousNumber = userInput;
+		console.log(previousArray);
 	};
 	var getTryNumber = function(){
-		return tryNumber;
+		if(tryNumber === 0 && state === true)
+			return 1;
+		//return tryNumber;
+		for(var i = 0;i<=previousArray.length;i++){
+			var flag = previousArray[i];
+			for(var j= 0;j<=previousArray.length;j++){
+				if(flag == previousArray[j]){
+					tryNumber += 1;
+				}
+			}
+		}
+		console.log(tryNumber);
 	};
 
 
@@ -75,9 +94,11 @@ var Handler = (function(){
 		//guessing game
 		$('.game-section .start').on('click', function(){
 			tries = guessingGame($('#game-input').val());
-			console.log(tries);
+			//console.log(tries);
 			if(tries)
 				$('.game-section .result').text('You WON, the number of tries was ' + getTryNumber());
+			$('#game-input').val('').focus();
+
 		});
 	};
 
