@@ -35,7 +35,7 @@ var Handler = (function(){
 	};
 
 
-
+	//guessingGame
 	var generateNumber = function(){
 		var randomnumber = Math.floor(Math.random()*11)
 		console.log('the randomnumber is '+randomnumber);
@@ -83,6 +83,27 @@ var Handler = (function(){
 	};
 
 
+	//return the larget element in a list
+	var getLargest = function(arr){
+		var i, j;
+		for(i=0,j=arr.length; i< j; i++){
+			if(arr[i] > arr[j-1]){
+				return arr[i];
+			}else{
+				return arr[j-1];
+			}
+		}
+	};
+
+	//reverse a list
+	var reverseList = function(list){
+		return list.reverse();
+	};
+
+	//check element in list, would be the getOcurrences() function
+
+
+
 
 
 	var events = function(){
@@ -103,6 +124,20 @@ var Handler = (function(){
 			$('#game-input').val('').focus();
 
 		});
+
+		//get largest
+		arr = [30,40,32,55];
+		var largest = getLargest(arr);
+		console.log(largest);
+
+		//reverse list
+		list = reverseList(arr);
+		console.log(list);
+
+		//getting ocurrences of given element
+		listOcurrences = [2, 2, 2, 3, 3, 1, 6, 7, 9];
+		ocur = getOcurrences(listOcurrences, 2);
+		console.log(ocur);
 	};
 
 
