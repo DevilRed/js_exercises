@@ -102,6 +102,22 @@ var Handler = (function(){
 
 	//check element in list, would be the getOcurrences() function
 
+	//fibonnaci
+	var fibonnaci = function(nro){
+		var var1 = 0;
+		var var2 = 1;
+		var var3;
+
+		$('.fibonnaci-section .result').append(var1 + ' ');
+		$('.fibonnaci-section .result').append(var2 + ' ');
+
+		for(var i = 3;i<=nro;i++){
+			var3 = var1 + var2;
+			var1 = var2;
+			var2 = var3;
+			$('.fibonnaci-section .result').append(var3 + ' ');
+		}
+	};
 
 
 
@@ -128,16 +144,24 @@ var Handler = (function(){
 		//get largest
 		arr = [30,40,32,55];
 		var largest = getLargest(arr);
+		console.log('the largest element is ');
 		console.log(largest);
 
 		//reverse list
 		list = reverseList(arr);
+		console.log('reverse list');
 		console.log(list);
 
 		//getting ocurrences of given element
 		listOcurrences = [2, 2, 2, 3, 3, 1, 6, 7, 9];
 		ocur = getOcurrences(listOcurrences, 2);
+		console.log('number of ocurrences is ');
 		console.log(ocur);
+
+		//fibonnaci
+		$('.fibonnaci-section .start').on('click', function(){
+			fibonnaci(100);
+		});
 	};
 
 
