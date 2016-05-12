@@ -61,22 +61,25 @@ var Handler = (function(){
 		console.log('the number is ' + number + ' and your input was ' + userInput);
 		if(state === false){
 			previousArray.push(userInput);
-		}
-		console.log(previousArray);
-	};
-	var getTryNumber = function(){
-		if(tryNumber === 0 && state === true)
-			return 1;
-		//return tryNumber;
-		for(var i = 0;i<=previousArray.length;i++){
-			var flag = previousArray[i];
-			for(var j= 0;j<=previousArray.length;j++){
-				if(flag == previousArray[j]){
-					tryNumber += 1;
-				}
+			ocurrences = getOcurrences(previousArray, userInput);
+			// console.log('ocurrences '+ocurrences);
+			if(ocurrences < 2){//if
+				tryNumber++;
 			}
 		}
-		console.log(tryNumber);
+	};
+	var getTryNumber = function(){
+		if(state === true && tryNumber == 0)
+			return 1;
+		return tryNumber;
+	};
+	var getOcurrences = function(arr, val){
+		var i, j, count = 0;
+		for (i = 0, j = arr.length; i < j; i++) {
+			if(arr[i] === val)
+				count++;
+		}
+		return count;
 	};
 
 
