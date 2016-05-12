@@ -43,7 +43,6 @@ var Handler = (function(){
 	};
 	number = generateNumber();
 	tryNumber = 0;
-	previousAttemps = null;
 	state = false;
 	previousArray = [];
 	var guessingGame = function(userInput){
@@ -74,8 +73,8 @@ var Handler = (function(){
 		return tryNumber;
 	};
 	var getOcurrences = function(arr, val){
-		var i, j, count = 0;
-		for (i = 0, j = arr.length; i < j; i++) {
+		var i, count = 0;
+		for (i = 0; i < arr.length; i++) {
 			if(arr[i] === val)
 				count++;
 		}
@@ -86,7 +85,8 @@ var Handler = (function(){
 	//return the larget element in a list
 	var getLargest = function(arr){
 		var i, j;
-		for(i=0,j=arr.length; i< j; i++){
+		j = arr.length;
+		for(i=0; i < j; i++){
 			if(arr[i] > arr[j-1]){
 				return arr[i];
 			}else{
