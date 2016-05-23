@@ -118,6 +118,30 @@ var Handler = (function(){
 			$('.fibonnaci-section .result').append(var3 + ' ');
 		}
 	};
+	//make a triangle of asteriscos
+	/**
+	 * Crear el programa asteriscos4 en el que se introduce un número entero y se crea una pirámide de asteriscos. Por ejemplo si se introduce el 6, el resultado sería:
+			     *
+			    ***
+			   *****
+			  *******
+			 *********
+			***********
+	 */
+	var doAsteriscos = function(){
+		var nro = prompt('enter the number to do asteriscos');
+		var row, col;
+		for(row = 1; row <= nro; row++){
+			// white spaces
+			for(col=1; col <= (nro-row); col++){
+				$('.asteriscos-section .result').text("&nbsp;");
+			}
+			for(col = 1; col <= (2*row-1); col++){
+				$('.asteriscos-section .result').text("*");
+			}
+			$('.asteriscos-section .result').text("<br>");
+		}
+	};
 
 
 
@@ -161,6 +185,11 @@ var Handler = (function(){
 		//fibonnaci
 		$('.fibonnaci-section .start').on('click', function(){
 			fibonnaci(100);
+		});
+
+		//asteriscos
+		$('.asteriscos-section .start').on('click', function(){
+			doAsteriscos();
 		});
 	};
 
