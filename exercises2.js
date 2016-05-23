@@ -128,6 +128,7 @@ var Handler = (function(){
 			 *********
 			***********
 	 */
+	//http://www.jorgesanchez.net/programacion/ejerciciosc/sencillos.html
 	var doAsteriscos = function(){
 		var nro = prompt('enter the number to do asteriscos');
 		var row, col;
